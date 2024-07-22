@@ -1,4 +1,3 @@
-// Path: src/utils/dependency-tree.ts
 export interface ImportData {
   moduleName: string;
   defaultImport?: string;

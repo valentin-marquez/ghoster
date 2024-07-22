@@ -1,4 +1,3 @@
-// Path: src/parsers/json-parser.ts
 import { FileParser, Import } from "./parser";
 
 export class PackageJsonParser implements FileParser {

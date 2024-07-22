@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 import * as fs from "fs";
 import * as path from "path";
-import { parsePackageJson, ParsedDependencies } from "./parsers/package";
+import { parsePackageJson } from "./parsers/package";
 import { ParserFactory } from "./parsers/factory";
 import { findFiles, readFileContent } from "./utils/files";
 import { highlightUnusedDependencies, createDecorationTypes, clearDecorations } from "./utils/decoration";

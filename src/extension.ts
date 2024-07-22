@@ -1,4 +1,3 @@
-// Path: src/extension.ts
 import * as vscode from "vscode";
 import { Ghoster } from "./ghoster";
 

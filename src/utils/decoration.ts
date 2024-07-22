@@ -1,4 +1,3 @@
-// Path: src/utils/decoration.ts
 import * as vscode from "vscode";
 
 const ghostlyMessages = [
@@ -14,14 +13,38 @@ const ghostlyMessages = [
   "🦉 Whooo's not using me?",
 ];
 
+const ghostlyAnalyzingMessages = [
+  "👻 Summoning the spirits of your dependencies...",
+  "🔮 Gazing into the crystal ball of your code...",
+  "🧙‍♂️ Casting a spell to reveal unused packages...",
+  "🕯️ Lighting candles to illuminate unused imports...",
+  "🦉 Whooo's been using what? Let's find out...",
+];
+
+/**
+ * Returns a random ghostly message from the available ghostly messages.
+ *
+ * @returns A random ghostly message.
+ */
 function getRandomGhostlyMessage(): string {
   return ghostlyMessages[Math.floor(Math.random() * ghostlyMessages.length)];
 }
 
-const analyzingMessage = "🔍 Analyzing usage...";
+/**
+ * Returns a random ghostly analyzing message.
+ *
+ * @returns A random ghostly analyzing message.
+ */
+function getRandomAnalyzingMessage(): string {
+  return ghostlyAnalyzingMessages[Math.floor(Math.random() * ghostlyAnalyzingMessages.length)];
+}
 
 let unusedDependencyDecorationType: vscode.TextEditorDecorationType;
+let analyzingDecorationType: vscode.TextEditorDecorationType;
 
+/**
+ * Creates the decoration types for unused dependencies and analyzing message.
+ */
 export function createDecorationTypes() {
   unusedDependencyDecorationType = vscode.window.createTextEditorDecorationType({
     backgroundColor: new vscode.ThemeColor("editorWarning.background"),
@@ -32,12 +55,31 @@ export function createDecorationTypes() {
     },
     isWholeLine: true,
   });
+
+  analyzingDecorationType = vscode.window.createTextEditorDecorationType({
+    after: {
+      contentText: "",
+      color: new vscode.ThemeColor("editorInfo.foreground"),
+      margin: "0 0 0 1em",
+    },
+    isWholeLine: true,
+  });
 }
 
+/**
+ * Clears the decorations for the given text editor.
+ * @param textEditor The text editor to clear decorations for.
+ */
 export function clearDecorations(textEditor: vscode.TextEditor) {
   textEditor.setDecorations(unusedDependencyDecorationType, []);
+  textEditor.setDecorations(analyzingDecorationType, []);
 }
 
+/**
+ * Highlights unused dependencies in the package.json file.
+ * @param packageJsonPath - The path to the package.json file.
+ * @param unusedDependencies - An array of unused dependencies.
+ */
 export function highlightUnusedDependencies(packageJsonPath: string, unusedDependencies: string[]) {
   const textEditor = vscode.window.visibleTextEditors.find((editor) => editor.document.fileName === packageJsonPath);
   if (!textEditor) {
@@ -73,6 +115,11 @@ export function highlightUnusedDependencies(packageJsonPath: string, unusedDepen
   textEditor.setDecorations(unusedDependencyDecorationType, ranges);
 }
 
+/**
+ * Shows an analyzing message as a decoration in the specified text editor.
+ *
+ * @param packageJsonPath - The path of the package.json file.
+ */
 export function showAnalyzingMessage(packageJsonPath: string) {
   const textEditor = vscode.window.visibleTextEditors.find((editor) => editor.document.fileName === packageJsonPath);
   if (!textEditor) {
@@ -93,7 +140,7 @@ export function showAnalyzingMessage(packageJsonPath: string) {
         range,
         renderOptions: {
           after: {
-            contentText: analyzingMessage,
+            contentText: getRandomAnalyzingMessage(),
             color: new vscode.ThemeColor("editorInfo.foreground"),
             backgroundColor: "transparent",
             margin: "0 0 0 1em",
@@ -102,6 +149,6 @@ export function showAnalyzingMessage(packageJsonPath: string) {
       },
     ];
 
-    textEditor.setDecorations(unusedDependencyDecorationType, decorationOptions);
+    textEditor.setDecorations(analyzingDecorationType, decorationOptions);
   }
 }

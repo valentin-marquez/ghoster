@@ -1,4 +1,3 @@
-// Path: src/utils/cache.ts
 import { ParsedDependencies } from "../parsers/package";
 
 interface FileCache {

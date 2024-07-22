@@ -1,4 +1,3 @@
-// Path: src/parsers/package.ts
 import * as vscode from "vscode";
 
 export interface ParsedDependencies {

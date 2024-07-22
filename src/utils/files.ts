@@ -1,4 +1,3 @@
-// Path: src/utils/files.ts
 import * as vscode from "vscode";
 
 export async function findFiles(): Promise<vscode.Uri[]> {

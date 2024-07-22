@@ -1,4 +1,3 @@
-// Path: src/utils/constants.ts
 import * as vscode from "vscode";
 
 export function getIgnoredDependencies(): string[] {

@@ -1,4 +1,3 @@
-// Path: src/parsers/parser.ts
 export interface Import {
   moduleName: string;
   defaultImport?: string;

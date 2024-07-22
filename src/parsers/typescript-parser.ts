@@ -1,4 +1,3 @@
-// Path: src/parsers/typescript-parser.ts
 import { parse } from "@babel/parser";
 import { JavaScriptParser } from "./javascript-parser";
 import { Import } from "./parser";

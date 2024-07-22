@@ -1,4 +1,3 @@
-// Path: src/parsers/factory.ts
 import * as path from "path";
 
 import { JavaScriptParser } from "./javascript-parser";

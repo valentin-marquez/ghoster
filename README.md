@@ -10,6 +10,15 @@ Ghoster is a Visual Studio Code extension that helps you keep your `package.json
 - 🧠 Smart parsing of JavaScript, TypeScript, and JSON files
 - 🔧 Customizable ignored dependencies
 
+## Supported File Types and Import Styles
+
+Ghoster currently supports:
+
+- File types: .js, .jsx, .ts, .tsx
+- Import style: ECMAScript modules (e.g., `import x from 'y'`)
+
+Note: CommonJS `require()` statements are not currently supported.
+
 ## Installation
 
 1. Open Visual Studio Code

@@ -1,4 +1,3 @@
-// Path: src/parsers/javascript-parser.ts
 import { parse } from "@babel/parser";
 import traverse from "@babel/traverse";
 import * as t from "@babel/types";
