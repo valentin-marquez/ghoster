@@ -18,7 +18,7 @@ jobs:
         id: check_release_commit
         run: |
           commit_message=$(git log --format=%B -n 1 ${{ github.sha }})
-          if [[ $commit_message =~ ^release[[:space:]]+([0-9]+\.[0-9]+\.[0-9]+) ]]; then
+          if [[ $commit_message =~ 🔖[[:space:]]*release[[:space:]]+([0-9]+\.[0-9]+\.[0-9]+) ]]; then
             echo "should_release=true" >> $GITHUB_OUTPUT
             echo "version=${BASH_REMATCH[1]}" >> $GITHUB_OUTPUT
           else

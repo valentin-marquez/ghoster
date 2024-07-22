@@ -3,7 +3,7 @@
   "displayName": "Ghoster",
   "description": "📦🔍 Ghoster - Uncover and highlight those ghostly dependencies haunting your package.json without being used. Catch them before they spook your code! 👻",
   "icon": "images/icon.png",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "publisher": "valentin-marquez",
   "repository": {
     "type": "git",
