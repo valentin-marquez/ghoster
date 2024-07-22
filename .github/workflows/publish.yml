@@ -48,12 +48,14 @@ jobs:
         uses: actions/checkout@v4
       - name: Get version from package.json
         id: get_version
-        run: echo "VERSION=$(node -p -e 'require(\"./package.json\").version')" >> $GITHUB_ENV
+        uses: beaconbrigade/package-json-version@v0.3
+        with:
+          path: .
       - name: Create Git tag
         id: create_tag
         run: |
-          git tag v${{ env.VERSION }}
-          git push origin v${{ env.VERSION }}
+          git tag v${{ steps.get-version.outputs.version }}
+          git push origin v${{ steps.get-version.outputs.version }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -81,7 +83,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ env.VERSION }}
+          tag_name: v${{ steps.get-version.outputs.version }}
           files: "*.vsix"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
