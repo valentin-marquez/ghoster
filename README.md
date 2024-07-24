@@ -1,5 +1,13 @@
 # Ghoster - VSCode Unused Dependencies Detector
 
+![Version](https://img.shields.io/github/v/release/valentin-marquez/ghoster)
+![License](https://img.shields.io/github/license/valentin-marquez/ghoster)
+![Build Status](https://img.shields.io/github/actions/workflow/status/valentin-marquez/ghoster/build.yml)
+![Downloads](https://img.shields.io/visual-studio-marketplace/d/valentin-marquez.ghoster)
+![Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/valentin-marquez.ghoster)
+![Issues](https://img.shields.io/github/issues/valentin-marquez/ghoster)
+![Stars](https://img.shields.io/github/stars/valentin-marquez/ghoster)
+
 Ghoster is a Visual Studio Code extension that helps you keep your `package.json` clean by detecting and highlighting unused dependencies in your JavaScript and TypeScript projects.
 
 ## Features

@@ -1,5 +1,4 @@
 import * as vscode from "vscode";
-import * as fs from "fs";
 import * as path from "path";
 import { parsePackageJson } from "./parsers/package";
 import { ParserFactory } from "./parsers/factory";
@@ -100,8 +99,9 @@ export class Ghoster {
     const gitignorePath = path.join(workspaceFolders[0].uri.fsPath, ".gitignore");
 
     try {
-      const gitignoreContent = await fs.promises.readFile(gitignorePath, "utf8");
-      this.ignoredPatterns = gitignoreContent
+      const gitignoreContentBuffer = await vscode.workspace.fs.readFile(vscode.Uri.file(gitignorePath)); // this return Thenable<Uint8Array>
+      this.ignoredPatterns = new TextDecoder()
+        .decode(gitignoreContentBuffer)
         .split("\n")
         .map((line) => line.trim())
         .filter((line) => line && !line.startsWith("#"))
